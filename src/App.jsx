@@ -7,7 +7,8 @@ import { AnimatePresence, motion } from "framer-motion";
 
 function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [activeResume, setActiveResume] = useState(null); // Track which resume opened the form
+  const [activeResume, setActiveResume] = useState(null);
+  const [hoverKey, setHoverKey] = useState(0); // Key to trigger re-animation on hover
 
   const contentRef1 = useRef(null);
   const contentRef2 = useRef(null);
@@ -32,48 +33,84 @@ function App() {
     setActiveResume(null);
   };
 
+  // Define animations for buttons with increased distance
+  const buttonLeftAnimation = {
+    initial: { x: -400, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    transition: { type: "spring", stiffness: 50, damping: 10, delay: 0.2 },
+  };
+
+  const buttonRightAnimation = {
+    initial: { x: 400, opacity: 0 },
+    animate: { x: 0, opacity: 1 },
+    transition: { type: "spring", stiffness: 50, damping: 10, delay: 0.4 },
+  };
+
+  // Handler to reset the hoverKey on hover to re-trigger animation
+  const handleHover = () => {
+    setHoverKey((prevKey) => prevKey + 1); // Update key to retrigger animation
+  };
+
   return (
     <div className="min-h-screen bg-gray-100 px-8 my-4">
       <div className="grid grid-cols-2 gap-10">
         {/* Resume 1 */}
-        <div>
+        <div className="relative group" onMouseEnter={handleHover}>
           <div className="bg-white p-6 rounded-lg m-4" ref={contentRef1}>
             <Resume1 resumeId="resume1" />
           </div>
-          <div className="flex items-start gap-4">
-            <button
-              className="px-4 py-2 bg-green-600 text-white rounded mb-2"
-              onClick={() => openModal("resume1")}
-            >
-              Make Your Resume
-            </button>
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded"
-              onClick={printResume1}
-            >
-              Download
-            </button>
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-lg">
+            <div className="flex flex-col items-center space-y-4">
+              {/* Button coming from the left */}
+              <motion.button
+                key={`left-${hoverKey}`}
+                {...buttonLeftAnimation}
+                className="px-4 py-2 bg-green-600 text-white rounded"
+                onClick={() => openModal("resume1")}
+              >
+                Customize Your Resume
+              </motion.button>
+
+              {/* Button coming from the right */}
+              <motion.button
+                key={`right-${hoverKey}`}
+                {...buttonRightAnimation}
+                className="px-4 py-2 bg-blue-600 text-white rounded"
+                onClick={printResume1}
+              >
+                Download
+              </motion.button>
+            </div>
           </div>
         </div>
 
         {/* Resume 2 */}
-        <div>
+        <div className="relative group" onMouseEnter={handleHover}>
           <div className="bg-white p-6 rounded-lg m-4" ref={contentRef2}>
             <Resume2 resumeId="resume2" />
           </div>
-          <div className="flex items-start gap-4">
-            <button
-              className="px-4 py-2 bg-green-600 text-white rounded mb-2"
-              onClick={() => openModal("resume2")}
-            >
-              Customize Your Resume
-            </button>
-            <button
-              className="px-4 py-2 bg-blue-600 text-white rounded"
-              onClick={printResume2}
-            >
-              Download
-            </button>
+          <div className="absolute inset-0 flex flex-col items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black bg-opacity-50 rounded-lg">
+            <div className="flex flex-col items-center space-y-4">
+              {/* Button coming from the left */}
+              <motion.button
+                key={`left-${hoverKey}`}
+                {...buttonLeftAnimation}
+                className="px-4 py-2 bg-green-600 text-white rounded"
+                onClick={() => openModal("resume2")}
+              >
+                Customize Your Resume
+              </motion.button>
+
+              {/* Button coming from the right */}
+              <motion.button
+                key={`right-${hoverKey}`}
+                {...buttonRightAnimation}
+                className="px-4 py-2 bg-blue-600 text-white rounded"
+                onClick={printResume2}
+              >
+                Download
+              </motion.button>
+            </div>
           </div>
         </div>
       </div>
