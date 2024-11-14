@@ -66,7 +66,7 @@ function App() {
               className="px-4 py-2 bg-green-600 text-white rounded mb-2"
               onClick={() => openModal("resume2")}
             >
-              Make Your Resume
+              Customize Your Resume
             </button>
             <button
               className="px-4 py-2 bg-blue-600 text-white rounded"
