@@ -21,7 +21,7 @@ function Resume1({ resumeId }) {
   const data = resumesData[resumeId] || {};
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen resume-container">
       {/* Left Sidebar */}
       <div className="basis-3/12 bg-[#858588] text-white px-6 py-8 min-h-screen">
         {/* Profile Image */}

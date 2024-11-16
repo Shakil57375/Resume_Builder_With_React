@@ -1,0 +1,28 @@
+@media print {
+    .resume-container {
+      width: 8.5in; /* Standard letter size width */
+      height: 11in; /* Standard letter size height */
+      overflow: hidden; /* Prevent overflow issues */
+      page-break-inside: avoid; /* Avoid breaking inside sections */
+    }
+  }
+  
+
+  @media print {
+    body {
+      transform: scale(1); /* Prevent scaling issues */
+      transform-origin: top left;
+    }
+  }
+/* if needed use this */
+  @media print {
+    .section {
+      page-break-before: auto; /* Avoid breaking the section */
+      page-break-after: auto; /* Allow breaks between sections */
+    }
+  
+    .no-break {
+      page-break-inside: avoid; /* Prevent breaking inside critical elements */
+    }
+  }
+  

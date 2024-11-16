@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaLinkedin } from 'react-icons/fa';
 import { ResumeContext } from '../Provider/ResumeProvider';
-
+import "./resume.css"
 function getDynamicFontSize(text, baseSize = 12) {
   const wordCount = text.split(' ').length;
   if (wordCount > 60) return `${baseSize - 4}px`;
@@ -30,7 +30,7 @@ function Resume2({ resumeId }) {
   };
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-6">
+    <div className="max-w-4xl mx-auto px-4 py-6 resume-container">
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>

@@ -92,7 +92,7 @@ function ResumeForm({ closeModal, resumeId }) {
         </Stepper>
 
         <FormProvider {...methods}>
-          <div className="overflow-y-auto h-[60vh] px-4">
+          <div className="overflow-y-auto 2xl:h-[60vh] xl:h-[50vh] lg:h-[40vh] md:h-[20vh] sm:h-[5vh] px-4">
             <form className="space-y-4">
               {steps[currentStep].component}
               <StepperNavigation
