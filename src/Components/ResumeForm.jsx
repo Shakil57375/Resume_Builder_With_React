@@ -76,7 +76,7 @@ function ResumeForm({ closeModal, resumeId }) {
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 backdrop-blur-md">
-      <div className="bg-white p-6 rounded-lg relative w-full max-w-[800px] h-[90vh] mx-auto">
+      <div className="bg-white p-6 rounded-lg relative w-full max-w-[800px] xl:h-[90vh] lg:h-[500px] mx-auto">
         <button
           className="absolute top-4 right-4 text-gray-500"
           onClick={closeModal}
